@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { addHabit } from "../features/habits/HabitSlice";
+import { useDispatch } from "react-redux";
 
-function addHabitButton() {
+function AddHabitButton() {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   function handleSubmit(e) {
@@ -11,16 +12,22 @@ function addHabitButton() {
     setText("");
   }
   return (
-    <div>
+    <form onSubmit={handleSubmit} className="flex gap-2">
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="New habit..."
+        className="border rounded px-2"
+      />
       <button
         type="submit"
-        onSubmit={handleSubmit}
-        className="px-3 text-blue-500 border-gray-200 font-semibold rounded-2xl"
+        className="px-3 text-blue-500 border-gray-200 font-semibold rounded-2xl cursor-pointer"
       >
         + Add Habit
       </button>
-    </div>
+    </form>
   );
 }
 
-export default addHabitButton;
+export default AddHabitButton;

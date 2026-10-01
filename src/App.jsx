@@ -1,19 +1,26 @@
-import { useSelector } from "react-redux";
-import React from "react";
-import addHabitButton from "./header/AddHabitButton";
-import greeting from "./header/Greeting";
-import { selectAllHabits } from "./features/habits/HabitSlice";
-import weekNavigation from "./header/weekNavigation";
+import React, { useState } from "react";
+import AddHabitButton from "./header/AddHabitButton";
+import Greeting from "./header/Greeting";
+import WeekNavigation from "./header/weekNavigation";
+import HabitActionList from "./sidepanel/HabitActionList";
+import HabitGrid from "./dashboard/HabitGrid";
+import { startOfWeek } from "./utils/date";
+import WeeklySummary from "./dashboard/WeeklySummary";
 
 function App() {
+  const [selectedDate, setSelectedDate] = useState(()=> startOfWeek(new Date()));
   return (
     <>
       <header className="bg-white w-full flex">
-        <greeting/>
-        <weekNavigation/>
-        <addHabitButton />
+        <Greeting name="Alina" />
+        <WeekNavigation selectedDate={selectedDate} onChange={setSelectedDate}/>
+        <AddHabitButton />
       </header>
-      <div className="bg-blue-200">HabitFlow Application</div>
+      <main>
+        <WeeklySummary weekStart={selectedDate}/>
+        <HabitGrid weekStart={selectedDate}/>
+      </main>
+      <HabitActionList />
     </>
   );
 }

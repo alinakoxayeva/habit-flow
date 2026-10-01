@@ -1,5 +1,6 @@
 import React from 'react'
 import { selectAllHabits } from '../features/habits/HabitSlice'
+import { useSelector } from 'react-redux'
 
 function HabitActionList() {
   const tasks = useSelector(selectAllHabits)
@@ -8,7 +9,9 @@ function HabitActionList() {
   }
   return (
     <ul>
-      {tasks.map((task)=>(<></>))}
+      {tasks.map((task)=>(
+        <li key={task.id}>{task.text}</li>
+      ))}
     </ul>
   )
 }
