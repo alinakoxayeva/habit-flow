@@ -10,7 +10,7 @@ function HabitActionList() {
   return (
     <ul>
       {tasks.map((task)=>(
-        <li key={task.id}>{task.text}</li>
+        <li key={task.id}>{task.name}</li>
       ))}
     </ul>
   )

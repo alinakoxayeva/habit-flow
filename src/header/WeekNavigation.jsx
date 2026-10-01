@@ -6,7 +6,7 @@ function WeekNavigation({selectedDate, onChange}) {
   return (
     <div className='flex items-center gap-2'>
       <button onClick={()=> onChange(addDays(selectedDate, -7))} aria-label='Previous week'>,</button>
-      <span></span>
+      <span>{formatDateKey(weekDates[0])} - {formatDateKey(weekDates[6])}</span>
       <button onClick={()=> onChange(addDays(selectedDate, 7))} aria-label='Next week'>,</button>
     </div>
   )

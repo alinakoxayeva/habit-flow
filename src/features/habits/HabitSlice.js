@@ -36,7 +36,7 @@ const HabitSlice = createSlice({
     },
     toggleHabit(state, action) {
       const { id, dateKey } = action.payload
-      const habit = state.items.find((h) => h.id === action.payload);
+      const habit = state.items.find((h) => h.id === id);
       if (!habit) return
       const index = habit.completedDates.indexOf(dateKey)
       if( index === -1){

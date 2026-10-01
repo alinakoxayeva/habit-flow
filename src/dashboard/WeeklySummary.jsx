@@ -8,7 +8,7 @@ function WeeklySummary({weekStart}){
     const weekDateKeys = getWeekDates(weekStart).map(formatDateKey)
     const total = habits.length *7;
     const completed = habits.reduce(
-        (sum,habit) => sum + habit.completedDates.filter((d)=>weekDateKeys.includes(d).length),0
+        (sum,habit) => sum + habit.completedDates.filter((d)=> weekDateKeys.includes(d)).length,0
     )
     const progress = total === 0? 0 : Math.round((completed/total)*100)
     return(
