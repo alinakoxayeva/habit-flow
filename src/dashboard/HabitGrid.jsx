@@ -15,7 +15,7 @@ function HabitGrid({ weekStart }) {
       <table>
         <thead>
           <tr>
-            <th className="text-left">Habit</th>
+            <th className="text-left p-2">Habit</th>
             {DAY_LABELS.map((label) => (
               <th key={label}>{label}</th>
             ))}
@@ -24,16 +24,18 @@ function HabitGrid({ weekStart }) {
         <tbody>
           {habits.map((habit) => (
             <tr>
-              <td style={{ color: habit.color }}>{habit.name}</td>
+              <td style={{ color: habit.color }} className="p-2">{habit.name}</td>
               {weekDates.map((day) => {
                 const dateKey = formatDateKey(day);
                 const isCompleted = habit.completedDates.includes(dateKey);
                 return (
-                  <td>
+                  <td className="p-2">
                     <button
                       onClick={() =>
                         dispatch(toggleHabit({ id: habit.id, dateKey }))
                       }
+                       aria-label={`${habit.name} - ${dateKey}`}
+                       className={`w-8 h-8 rounded-md border ${isCompleted ? "bg-green-400 border-green-500" : "bg-gray-100 border-gray-300"}`}
                     >
                       {isCompleted ? "✓" : ""}
                     </button>

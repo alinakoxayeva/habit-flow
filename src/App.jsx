@@ -11,7 +11,7 @@ function App() {
   const [selectedDate, setSelectedDate] = useState(()=> startOfWeek(new Date()));
   return (
     <>
-      <header className="bg-white w-full flex">
+      <header className="bg-white w-full flex items-center justify-between gap-4 px-4 py-3">
         <Greeting name="Alina" />
         <WeekNavigation selectedDate={selectedDate} onChange={setSelectedDate}/>
         <AddHabitButton />
